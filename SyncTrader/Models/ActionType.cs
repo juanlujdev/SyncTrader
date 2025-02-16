@@ -9,5 +9,9 @@ public partial class ActionType
 
     public string TypeName { get; set; } = null!;
 
+    public string? TypeNameBroker { get; set; }
+
+    public int? TypeBrokerId { get; set; }
+
     public virtual ICollection<Action> Actions { get; set; } = new List<Action>();
 }

@@ -46,6 +46,7 @@ public partial class SyncTraderDbTestContext : DbContext
             entity.Property(e => e.CompanyName)
                 .HasMaxLength(100)
                 .IsUnicode(false);
+            entity.Property(e => e.OrderTime).HasColumnType("decimal(18, 0)");
             entity.Property(e => e.Percentage).HasColumnType("decimal(5, 2)");
 
             entity.HasOne(d => d.ActionType).WithMany(p => p.Actions)
@@ -72,6 +73,9 @@ public partial class SyncTraderDbTestContext : DbContext
 
             entity.Property(e => e.TypeName)
                 .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.TypeNameBroker)
+                .HasMaxLength(100)
                 .IsUnicode(false);
         });
 
@@ -106,13 +110,11 @@ public partial class SyncTraderDbTestContext : DbContext
 
             entity.HasIndex(e => e.ActionId, "UQ__LoggingA__FFE3F4D890D58245").IsUnique();
 
-            entity.Property(e => e.AutomaticAmount).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.AutomaticPercentage).HasColumnType("decimal(5, 2)");
+            entity.Property(e => e.Amount).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.ErrorAction)
                 .HasMaxLength(255)
                 .IsUnicode(false);
-            entity.Property(e => e.ManualAmount).HasColumnType("decimal(18, 2)");
-            entity.Property(e => e.ManualPercentage).HasColumnType("decimal(5, 2)");
+            entity.Property(e => e.Percentage).HasColumnType("decimal(5, 2)");
 
             entity.HasOne(d => d.Action).WithOne(p => p.LoggingAction)
                 .HasForeignKey<LoggingAction>(d => d.ActionId)

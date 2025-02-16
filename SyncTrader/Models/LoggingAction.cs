@@ -11,15 +11,13 @@ public partial class LoggingAction
 
     public int? ActionId { get; set; }
 
-    public decimal AutomaticAmount { get; set; }
+    public decimal Amount { get; set; }
 
-    public decimal AutomaticPercentage { get; set; }
-
-    public decimal ManualAmount { get; set; }
-
-    public decimal ManualPercentage { get; set; }
+    public decimal Percentage { get; set; }
 
     public string? ErrorAction { get; set; }
+
+    public bool AutomaticAction { get; set; }
 
     public virtual Action? Action { get; set; }
 

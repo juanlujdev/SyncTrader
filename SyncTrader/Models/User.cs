@@ -27,6 +27,10 @@ public partial class User
 
     public int? BrokerId { get; set; }
 
+    public bool AutomaticAction { get; set; }
+
+    public bool UserMaster { get; set; }
+
     public virtual ICollection<Action> Actions { get; set; } = new List<Action>();
 
     public virtual Broker? Broker { get; set; }

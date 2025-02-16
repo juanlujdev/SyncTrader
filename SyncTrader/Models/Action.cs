@@ -21,11 +21,11 @@ public partial class Action
 
     public int StatusId { get; set; }
 
-    public bool AutomaticAction { get; set; }
-
     public bool ActionChoice { get; set; }
 
     public int ActionTypeId { get; set; }
+
+    public decimal? OrderTime { get; set; }
 
     public virtual ActionType ActionType { get; set; } = null!;
 
