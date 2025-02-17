@@ -11,7 +11,7 @@ Aplicación móvil disponible para **Android** e **iOS**.
 ## Funcionamiento General
 
 1. El usuario máster realiza una operación en el broker.
-2. Los suscriptores reciben una notificación en su dispositivo móvil con la opción de **aceptar o rechazar** la operación.
+2. Si el subcriptor tiene desactivada la opcion automática, recibirá una notificación en su dispositivo móvil con la opción de **aceptar o rechazar** la operación y podrá editar el importe de inversión.
 3. Si el suscriptor tiene activada la opción de ejecución automática, la operación se realiza directamente.
 4. Se puede configurar recibir una notificación vía **SMS, email o WhatsApp** confirmando la ejecución de la operación.
 5. Las operaciones se ejecutan en base a una **proporción del capital disponible** de cada suscriptor.
