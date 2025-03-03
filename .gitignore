@@ -41,3 +41,6 @@ bld/
 msbuild.log
 msbuild.err
 msbuild.wrn
+# No subir archivos de Microsoft Word
+*.doc
+*.docx
