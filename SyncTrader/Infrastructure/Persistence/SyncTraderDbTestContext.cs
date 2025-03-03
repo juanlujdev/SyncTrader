@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SyncTrader.Domain.Entities;
+using Action = SyncTrader.Domain.Entities.Action;
 
-namespace SyncTrader.Models
+namespace SyncTrader.Infrastructure.Persistence
 {
     public partial class SyncTraderDbTestContext : DbContext
     {
