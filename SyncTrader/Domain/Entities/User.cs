@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace SyncTrader.Domain.Entities;
+﻿namespace SyncTrader.Domain.Entities;
 
 public partial class User
 {

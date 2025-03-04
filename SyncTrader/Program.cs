@@ -17,8 +17,12 @@ builder.Services.AddDbContext<SyncTraderDbTestContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SyncTraderDB")));
 
 // **Registro de servicios y repositorios**
+//StatusAction
 builder.Services.AddScoped<IStatusActionService, StatusActionService>();
 builder.Services.AddScoped<IStatusActionRepository, StatusActionRepository>();
+//User
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
