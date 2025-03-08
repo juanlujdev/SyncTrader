@@ -7,6 +7,42 @@
         public string Surname { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public decimal Amount { get; set; } 
+        public decimal Amount { get; set; }
+        public DateOnly RegistrationDate { get; set; }
+        public bool Admin { get; set; }
+        public bool AutomaticAction { get; set; }
+
+        public bool UserMaster { get; set; }
+        public bool ActuallyUser { get; set; }
+
+        public DateOnly? UnuscriptionDate { get; set; }
+    }
+
+    public class CreateUserDto
+    {
+        public string Name { get; set; } = null!;
+        public string Surname { get; set; } = null!;
+
+        public string Email { get; set; } = null!;
+
+        public string PhoneNumber { get; set; } = null!;
+
+        public DateOnly RegistrationDate { get; set; }
+
+        public bool ActuallyUser { get; set; }
+
+        public DateOnly? UnuscriptionDate { get; set; }
+
+        public bool Admin { get; set; }
+
+        public decimal Amount { get; set; }
+
+        public string Password { get; set; } = null!;
+
+        public int? BrokerId { get; set; }
+
+        public bool AutomaticAction { get; set; }
+
+        public bool UserMaster { get; set; }
     }
 }

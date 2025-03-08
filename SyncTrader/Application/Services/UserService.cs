@@ -11,19 +11,22 @@ namespace SyncTrader.Application.Services
         {
             _userRepository = userRepository;
         }
+
+        public Task<UserDto> CreateUserAsync(CreateUserDto userDto)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<UserDto>> GetAllUsersAsync()
         {
             var users = await _userRepository.GetAllAsync();
-            return users.Select(user => new UserDto
-            {
-                UserId = user.UserId,
-                // Name = user.Name, no existe el name en User
-                Surname = user.Surname,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
-                Amount = user.Amount
-            });
+            //TODO: Mapear al userDto
+            throw new NotImplementedException();
         }
 
+        public Task<UserDto> GetUserByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
