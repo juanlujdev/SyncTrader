@@ -13,9 +13,32 @@ namespace SyncTrader.Infrastructure.Persistence.Repositories
             _context = context;
         }
 
-        public Task<User> CreateUserAsync(CreateUserDto userDto)
+        public async Task<User> CreateUserAsync(CreateUserDto userDto)
         {
-            throw new NotImplementedException();
+            var existingUser = _context.Users.FirstOrDefault(u => u.Email == userDto.Email);
+            if (existingUser != null)
+            {
+                throw new ArgumentException($"User with email {userDto.Email} already exists");
+            }
+            
+            var user = new User
+            {
+                Name = userDto.Name,
+                Surname = userDto.Surname,
+                Email = userDto.Email,
+                PhoneNumber = userDto.PhoneNumber,
+                RegistrationDate = userDto.RegistrationDate,
+                ActuallyUser = userDto.ActuallyUser,
+                Admin = userDto.Admin,
+                Amount = userDto.Amount,
+                Password = userDto.Password,
+                BrokerId = userDto.BrokerId,
+                AutomaticAction = userDto.AutomaticAction,
+                UserMaster = userDto.UserMaster
+            };
+
+            await _context.Users.AddAsync(user);
+            return user;
         }
 
         public async Task<IEnumerable<User>> GetAllAsync()

@@ -1,4 +1,6 @@
-﻿namespace SyncTrader.Domain.Entities;
+﻿using SyncTrader.Domain.ValueObjects;
+
+namespace SyncTrader.Domain.Entities;
 
 public partial class User
 {
@@ -7,21 +9,21 @@ public partial class User
 
     public string Surname { get; set; } = null!;
 
-    public string Email { get; set; } = null!;
+    public Email Email { get; set; } = null!;
 
-    public string PhoneNumber { get; set; } = null!;
+    public PhoneNumber PhoneNumber { get; set; } = null!;
 
-    public DateOnly RegistrationDate { get; set; }
+    public DateTime RegistrationDate { get; set; }
 
     public bool ActuallyUser { get; set; }
 
-    public DateOnly? UnuscriptionDate { get; set; }
+    public DateTime? UnuscriptionDate { get; set; }
 
     public bool Admin { get; set; }
 
     public decimal Amount { get; set; }
 
-    public string Password { get; set; } = null!;
+    public Password Password { get; set; } = null!;
 
     public int? BrokerId { get; set; }
 
