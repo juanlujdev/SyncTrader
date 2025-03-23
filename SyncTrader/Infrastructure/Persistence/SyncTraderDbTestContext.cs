@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SyncTrader.Domain.Entities;
 
-namespace SyncTrader.Models
+namespace SyncTrader.Infrastructure.Persistence
 {
     public partial class SyncTraderDbTestContext : DbContext
     {
@@ -9,7 +10,7 @@ namespace SyncTrader.Models
         {
         }
 
-        public virtual DbSet<Action> Actions { get; set; }
+        public virtual DbSet<Domain.Entities.Action> Actions { get; set; }
         public virtual DbSet<ActionType> ActionTypes { get; set; }
         public virtual DbSet<Broker> Brokers { get; set; }
         public virtual DbSet<LoggingAction> LoggingActions { get; set; }
@@ -18,7 +19,7 @@ namespace SyncTrader.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Action>(entity =>
+            modelBuilder.Entity<Domain.Entities.Action>(entity =>
             {
                 entity.HasKey(e => e.ActionId).HasName("PK__Action__FFE3F4D9AA221950");
                 entity.ToTable("Action");

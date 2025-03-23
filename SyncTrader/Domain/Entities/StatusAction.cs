@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SyncTrader.Models;
+namespace SyncTrader.Domain.Entities;
 
 public partial class StatusAction
 {
