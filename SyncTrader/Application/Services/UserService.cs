@@ -1,9 +1,7 @@
 ﻿using SyncTrader.Application.Dtos;
 using SyncTrader.Application.Interfaces;
-using SyncTrader.Domain.Entities;
 using SyncTrader.Domain.Repositories;
 using SyncTrader.Domain.ValueObjects;
-using System.Linq.Expressions;
 
 namespace SyncTrader.Application.Services
 {
@@ -19,33 +17,44 @@ namespace SyncTrader.Application.Services
         {
             try
             {
-                var email = Email.ValidateEmail(userDto.Email.Value);
-                var phoneNumber = PhoneNumber.ValidatePhoneNumber(userDto.PhoneNumber.Value);
+                var email = Email.ValidateEmail(userDto.Email);
+                var phoneNumber = PhoneNumber.ValidatePhoneNumber(userDto.PhoneNumber);
+                var password = Password.Create(userDto.Password.Trim());
                 var user = new CreateUserDto
                 {
-                    Name = userDto.Name,
-                    Surname = userDto.Surname,
-                    Email = email,
-                    PhoneNumber = phoneNumber,
+                    Name = userDto.Name.Trim().ToUpper(),
+                    Surname = userDto.Surname.Trim().ToUpper(),
+                    Email = email.Value.Trim().ToUpper(),
+                    PhoneNumber = phoneNumber.Value.Trim(),
                     RegistrationDate = DateTime.Now,
                     ActuallyUser = true,
                     Admin = true,
-                    Amount = userDto.Amount,//si viene null, ponerlo a 0
-                    Password = Password.Create(userDto.Password.HashedValue),
+                    Amount = userDto.Amount,
+                    Password = password.HashedValue,
                     //BrokerId = tendrá que buscar que broker ID tiene el usuario MASTER en la base de datos y ponerlo por defecto, y de alguna manera que se registre en la plataforma de broker y coger su token, tambien llamar a la creacion de Broker y crear un registro
                     AutomaticAction = userDto.AutomaticAction,
                     UserMaster = true
                 };
 
-                await _userRepository.CreateUserAsync(user);
+                var userCreated = await _userRepository.CreateUserAsync(user);
+                return new UserDto
+                {
+                    Name = userCreated.Name,
+                    Surname = userCreated.Surname,
+                    Email = userCreated.Email,
+                    PhoneNumber = userCreated.PhoneNumber,
+                    Amount = userCreated.Amount,
+                    RegistrationDate = userCreated.RegistrationDate,
+                    Admin = userCreated.Admin,
+                    AutomaticAction = userCreated.AutomaticAction,
+                    UserMaster = userCreated.UserMaster,
+                    ActuallyUser = userCreated.ActuallyUser
+                };
             }
             catch (ArgumentException e)
             {
                 throw new ArgumentException($"Error creating user {e.Message} ", e);
             }
-                
-            //TODO:
-            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<UserDto>> GetAllUsersAsync()
@@ -68,7 +77,20 @@ namespace SyncTrader.Application.Services
 
         public async Task<UserDto> GetUserByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var user = await _userRepository.GetUserByIdAsync(id);
+            return new UserDto
+            {
+                Name = user.Name,
+                Surname = user.Surname,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Amount = user.Amount,
+                RegistrationDate = user.RegistrationDate,
+                Admin = user.Admin,
+                AutomaticAction = user.AutomaticAction,
+                UserMaster = user.UserMaster,
+                ActuallyUser = user.ActuallyUser
+            };
         }
     }
 }

@@ -9,9 +9,9 @@ public partial class User
 
     public string Surname { get; set; } = null!;
 
-    public Email Email { get; set; } = null!;
+    public string Email { get; set; } = null!;
 
-    public PhoneNumber PhoneNumber { get; set; } = null!;
+    public string PhoneNumber { get; set; } = null!;
 
     public DateTime RegistrationDate { get; set; }
 
@@ -23,7 +23,7 @@ public partial class User
 
     public decimal Amount { get; set; }
 
-    public Password Password { get; set; } = null!;
+    public string Password { get; set; } = null!;
 
     public int? BrokerId { get; set; }
 

@@ -7,9 +7,9 @@ namespace SyncTrader.Application.Dtos
         public int UserId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public Email Email { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
-        public PhoneNumber PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public decimal Amount { get; set; }
         public DateTime RegistrationDate { get; set; }
         public bool Admin { get; set; }
@@ -25,9 +25,9 @@ namespace SyncTrader.Application.Dtos
         public string Name { get; set; } = null!;
         public string Surname { get; set; } = null!;
 
-        public Email Email { get; set; } = null!;
+        public string Email { get; set; } = null!;
 
-        public PhoneNumber PhoneNumber { get; set; } = null!;
+        public string PhoneNumber { get; set; } = null!;
 
         public DateTime RegistrationDate { get; set; }
 
@@ -39,7 +39,7 @@ namespace SyncTrader.Application.Dtos
 
         public decimal Amount { get; set; }
 
-        public Password Password { get; set; } = null!;
+        public string Password { get; set; } = null!;
 
         public int? BrokerId { get; set; }
 

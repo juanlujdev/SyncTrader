@@ -48,7 +48,7 @@ namespace SyncTrader.Infrastructure.Persistence.Repositories
 
         public async Task<User> GetUserByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Users.FirstOrDefaultAsync(u => u.UserId == id);
         }
     }
 }
